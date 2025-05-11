@@ -1,8 +1,6 @@
 
 import { ElevenLabsClient } from 'elevenlabs';
-import { createWriteStream } from 'fs';
 import { NextResponse } from 'next/server';
-import { pipeline } from 'stream/promises';
 import { supabase } from '@/configs/SupabaseClient';
 import { v4 as uuid } from 'uuid';
 
