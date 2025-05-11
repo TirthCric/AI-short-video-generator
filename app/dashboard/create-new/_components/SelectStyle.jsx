@@ -23,7 +23,7 @@ const SelectStyle = ({ onUserSelect }) => {
         },
         {
             name: 'GTA',
-            image: 'GTA.jpg'
+            image: 'gta.jpg'
         },
     ]
 
