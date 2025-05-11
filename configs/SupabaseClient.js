@@ -7,4 +7,4 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY; // For backend (adm
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
 // For server-side operations (e.g., in API routes):
-export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+// export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
