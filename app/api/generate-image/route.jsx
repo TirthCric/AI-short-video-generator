@@ -9,7 +9,7 @@ export async function POST(request) {
     try {
         const { prompt } = await request.json();
         const imagePrompts = JSON.parse(prompt);
-        const imagepig = new ImagePig(process.env.IMAGEPIG_API_KEY);
+        const imagepig = new ImagePig(process.env.NEXT_PUBLIC_IMAGEPIG_API_KEY);
         const imageUrls = [];
         const delayMs = 30 * 1000; // 1 minute in milliseconds
 

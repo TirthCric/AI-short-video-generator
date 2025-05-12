@@ -110,7 +110,7 @@ export default function Page() {
             {
               dataList && dataList.map((data, index) => (
                 
-                <DemoList key={Index} data={data} />
+                <DemoList key={data?.createdAt || index} data={data} />
               ))
             }
           </div>
