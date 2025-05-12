@@ -22,7 +22,7 @@ export async function POST(request) {
         // Generate audio using ElevenLabs API
         const audio = await client.textToSpeech.convert('JBFqnCBsd6RMkjVDRZzb', {
             model_id: 'eleven_multilingual_v2',
-            text,
+            text: text,
             output_format: 'mp3_44100_128',
             // Optional voice settings that allow you to customize the output
             voice_settings: {
