@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/sonner";
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
+  display: "swap"
 });
 
 export default function RootLayout({ children }) {
