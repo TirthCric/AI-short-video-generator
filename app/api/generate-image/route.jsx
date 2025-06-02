@@ -9,7 +9,7 @@ export async function POST(request) {
     try {
         const { prompt } = await request.json();
         const imagePrompts = JSON.parse(prompt);
-        const imagepig = new ImagePig(process.env.NEXT_PUBLIC_IMAGEPIG_API_KEY);
+        const imagepig = new ImagePig(process.env.IMAGEPIG_API_KEY);
         const imageUrls = [];
         const delayMs = 30 * 1000; // 1 minute in milliseconds
 
@@ -31,7 +31,7 @@ export async function POST(request) {
                     .from('images')
                     .upload(imagePath, buffer, { contentType: mimeType });
 
-                console.log("Upload Data:", uploadData);
+                // console.log("Upload Data:", uploadData);
 
                 if (uploadError) {
                     console.error('Error uploading image:', uploadError);
@@ -43,7 +43,7 @@ export async function POST(request) {
                     .getPublicUrl(uploadData.path);
                 const publicUrl = publicUrlData.publicUrl;
                 imageUrls.push(publicUrl);
-                console.log("Public URL:", publicUrl);
+                // console.log("Public URL:", publicUrl);
 
             } catch (apiError) {
                 console.error('Error generating image:', apiError);

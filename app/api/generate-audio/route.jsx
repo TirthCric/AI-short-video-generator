@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 
 export async function POST(request) {
 
-    const ELEVENLABS_API_KEY = process.env.NEXT_PUBLIC_ELEVENLABS_API_KEY;
+    const ELEVENLABS_API_KEY = process.env.ELEVENLABS_API_KEY;
     // const text = 'Hey, this is Jennifer from Play. Please hold on a moment, let me just um pull up your details real quick.';
     const { text } = await request.json();
     if (!text) {

@@ -121,7 +121,7 @@ const PlayerDialog = ({ playVideo, videoId, setIsPlayVideo }) => {
 
     const currentPath = usePathname();
     // const id = 2
-    console.log("This is log in playerDiaglog", playVideo, videoId)
+    // console.log("This is log in playerDiaglog", playVideo, videoId)
     const router = useRouter();
 
     useEffect(() => {
@@ -132,12 +132,12 @@ const PlayerDialog = ({ playVideo, videoId, setIsPlayVideo }) => {
             if (videoDataCache) {
                 setData(videoDataCache);
                 const lastCaptionEnd = videoDataCache?.captions?.words[videoDataCache?.captions?.words?.length - 1]?.end;
-                setTotalSeconds(lastCaptionEnd ? Math.ceil(lastCaptionEnd) : 0);
-                console.log("**Player Dialog** Data fetched from session");
+                setTotalSeconds(lastCaptionEnd ? Math.ceil((lastCaptionEnd / 1000)) : 0);
+                // console.log("**Player Dialog** Data fetched from session");
                 setLoading(false);
             } else {
                 getVideoData(videoId);
-                console.log("**Player Dialog** Data fetched from Database");
+                // console.log("**Player Dialog** Data fetched from Database");
             }
         } else {
             setData(null);
@@ -152,11 +152,11 @@ const PlayerDialog = ({ playVideo, videoId, setIsPlayVideo }) => {
             const result = await db.select().from(VideoData).where(eq(VideoData?.id, id));
             setData(result[0]);
             sessionStorage.setItem(`videoDataCache_${id}`, JSON.stringify(result[0]));
-            console.log('this is result', result[0])
+            // console.log('this is result', result[0])
             const lastCaptionEnd = result[0]?.captions?.words[result[0]?.captions?.words?.length - 1]?.end;
             // console.log("Last caption ended :", lastCaptionEnd);
 
-            setTotalSeconds(lastCaptionEnd ? Math.ceil(lastCaptionEnd) : 0);
+            setTotalSeconds(lastCaptionEnd ? Math.ceil((lastCaptionEnd/1000)) : 0);
         } catch (error) {
             console.error("Error fetching video data:", error);
             // Handle error appropriately, e.g., set an error state
@@ -211,14 +211,14 @@ const PlayerDialog = ({ playVideo, videoId, setIsPlayVideo }) => {
                                 currentPath == '/dashboard/create-new' && router.replace('/dashboard');
                             }}
                         >Cancel</Button>
-                        <Button 
-                        className="bg-[#8338ec] hover:bg-[#8833dd]"
-                        onClick={() => {
-                            toast("Sorry! But we don't impliment export yet.");
-                            setIsPlayVideo(false);
-                            setIsOpenDialog(false);
-                            currentPath == '/dashboard/create-new' && router.replace('/dashboard');
-                        }}
+                        <Button
+                            className="bg-[#8338ec] hover:bg-[#8833dd]"
+                            onClick={() => {
+                                toast("Sorry! But we don't impliment export yet.");
+                                setIsPlayVideo(false);
+                                setIsOpenDialog(false);
+                                currentPath == '/dashboard/create-new' && router.replace('/dashboard');
+                            }}
                         >Export</Button>
                     </div>
                 </DialogHeader>

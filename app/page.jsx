@@ -16,7 +16,7 @@ import { Index } from "drizzle-orm/mysql-core";
 export default function Page() {
   const { user } = useUser();
   const [dataList, setDataList] = useState(null);
-  console.log("datalist first: ", dataList);
+  // console.log("datalist first: ", dataList);
 
   useEffect(() => {
     const cachedDataStr = localStorage.getItem("dataList");
@@ -52,7 +52,7 @@ export default function Page() {
         expiry: now + 3600000,
       };
       localStorage.setItem("dataList", JSON.stringify(item));
-      console.log("dataList:", dataList);
+      // console.log("dataList:", dataList);
       
     } catch (error) {
       console.error("Error from fetching datalist: ", error);

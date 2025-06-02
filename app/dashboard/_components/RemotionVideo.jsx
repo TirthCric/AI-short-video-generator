@@ -12,7 +12,7 @@ const RemotionVideo = ({ script, imageList, audioFileUrl, captions, totalSeconds
 
     const getCurrentCaption = () => {
         const currentTime = frame / fps;
-        const currentCaption = captions?.words.find(caption => currentTime >= caption.start && currentTime <= caption.end);
+        const currentCaption = captions?.words.find(caption => currentTime >= (caption.start/1000) && currentTime <= (caption.end/1000));
         return currentCaption ? currentCaption.text : " ";
     }
 

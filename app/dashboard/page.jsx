@@ -24,11 +24,9 @@ export default function Page() {
     const videoListCache = sessionStorage.getItem("videoListCache");
     if (videoListCache) {
       setVideoListData(JSON.parse(videoListCache));
-      console.log("**Dashboard** Data fetched from session");
       setIsLoading(false);
     } else {
       getVideoList();
-      console.log("**Dashboard** Data fetched from Database");
     }
   }, [user])
 
